@@ -1,0 +1,20 @@
+# Node modules
+node_modules
+
+# Environment variables
+.env
+
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# macOS
+.DS_Store
+
+# Build folders
+dist
+build
+
+# Render/Vercel artifacts
+.vercel
