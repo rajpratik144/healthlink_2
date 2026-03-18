@@ -19,11 +19,11 @@ const sendTokenResponse = (user, statusCode, res) => {
   const token = generateToken(user._id);
 
   const cookieOptions = {
-  httpOnly: true,
-  secure: true,
-  sameSite: "none",
-  maxAge: 7 * 24 * 60 * 60 * 1000,
-};
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  };
 
   res
     .status(statusCode)
@@ -36,6 +36,7 @@ const sendTokenResponse = (user, statusCode, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        profileCompleted: user.profileCompleted, 
       },
     });
 };
