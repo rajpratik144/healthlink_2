@@ -7,6 +7,8 @@ import cloudinary from "../config/cloudinary.js";
 */
 export const completeDoctorProfile = async (req, res) => {
   try {
+    console.log("body: ", req.body);
+console.log("file: ",req.file);
     const userId = req.user._id;
 
     const user = await User.findById(userId);

@@ -7,6 +7,7 @@ import {
 } from "../controllers/auth.controller.js";
 
 import validate from "../middleware/validate.middleware.js";
+import { protect } from "../middleware/auth.middleware.js";
 
 import {
   registerPatientSchema,
@@ -17,7 +18,9 @@ import {
 const router = express.Router();
 
 /*
-  Patient Registration
+  ===============================
+  PATIENT REGISTRATION
+  ===============================
 */
 router.post(
   "/register/patient",
@@ -26,7 +29,9 @@ router.post(
 );
 
 /*
-  Doctor Registration (Step 1)
+  ===============================
+  DOCTOR REGISTRATION (STEP 1)
+  ===============================
 */
 router.post(
   "/register/doctor",
@@ -35,7 +40,9 @@ router.post(
 );
 
 /*
-  Login
+  ===============================
+  LOGIN
+  ===============================
 */
 router.post(
   "/login",
@@ -44,8 +51,29 @@ router.post(
 );
 
 /*
-  Logout
+  ===============================
+  LOGOUT
+  ===============================
 */
 router.post("/logout", logout);
+
+/*
+  ===============================
+  GET CURRENT USER (🔥 IMPORTANT)
+  ===============================
+  Used by frontend to persist login state
+*/
+router.get("/me", protect, (req, res) => {
+  res.json({
+    success: true,
+    user: {
+      id: req.user._id,
+      name: req.user.name,
+      email: req.user.email,
+      role: req.user.role,
+      profileCompleted: req.user.profileCompleted,
+    },
+  });
+});
 
 export default router;
