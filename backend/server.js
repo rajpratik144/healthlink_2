@@ -56,7 +56,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 /* ✅ VERY IMPORTANT */
-app.options("/*", cors(corsOptions));
+// app.options("/*", cors(corsOptions));
 
 /* ================= PARSERS ================= */
 app.use(express.json());
