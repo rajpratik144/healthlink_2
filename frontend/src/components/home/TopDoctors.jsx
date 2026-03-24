@@ -14,7 +14,7 @@ function TopDoctors() {
 
         const data = await searchDoctors({
   page: 1,
-  limit: 10
+  limit: 8
 });
 
 console.log("Doctors API Response:", data);
